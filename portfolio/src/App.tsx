@@ -24,11 +24,11 @@ function App() {
       <Navigation activeSection={activeSection} scrollToSection={scrollToSection} />
       <main>
         <Hero scrollToSection={scrollToSection} />
-        <Services scrollToSection={scrollToSection} />
-        <Technologies scrollToSection={scrollToSection} />
-        <AboutMe scrollToSection={scrollToSection} />
-        <Portfolio scrollToSection={scrollToSection} />
-        <Contact scrollToSection={scrollToSection} />
+        <Services />
+        <Technologies />
+        <AboutMe />
+        <Portfolio />
+        <Contact />
       </main>
       <Footer scrollToSection={scrollToSection} />
     </div>

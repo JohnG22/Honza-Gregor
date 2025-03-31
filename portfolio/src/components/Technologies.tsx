@@ -3,11 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShieldHalved } from '@fortawesome/free-solid-svg-icons'
 import { faFigma, faReact } from '@fortawesome/free-brands-svg-icons'
 
-interface TechnologiesProps {
-    scrollToSection: (sectionId: string) => void;
-}
-
-const Technologies: React.FC<TechnologiesProps> = ({ scrollToSection }) => {
+const Technologies: React.FC = () => {
     const technologies = [
         {
             title: "Pro design dodržující praktiky UI/UX designu",

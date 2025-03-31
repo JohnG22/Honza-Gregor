@@ -5,11 +5,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-interface PortfolioProps {
-    scrollToSection: (sectionId: string) => void;
-}
-
-const Portfolio: React.FC<PortfolioProps> = ({ scrollToSection }) => {
+const Portfolio: React.FC = () => {
     return (
         <section className="py-20" id="portfolio">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

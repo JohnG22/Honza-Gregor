@@ -1,10 +1,6 @@
 import React from 'react'
 
-interface AboutMeProps {
-    scrollToSection: (sectionId: string) => void;
-}
-
-const AboutMe: React.FC<AboutMeProps> = ({ scrollToSection }) => {
+const AboutMe: React.FC = () => {
     const features = [
         {
             title: "Rychlost a efektivita webových stránek",
