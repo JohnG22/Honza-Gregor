@@ -1,5 +1,7 @@
 import React from 'react'
 import Scene3D from './components/Scene3D'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCode } from '@fortawesome/free-solid-svg-icons'
 
 const App: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -11,15 +13,17 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <title>Portfolio - Honza Gregor</title>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white z-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <button
               onClick={() => scrollToSection('hero')}
-              className="text-2xl font-bold text-[#2B81EB] hover:text-[#4D87C0] transition-colors"
+              className="text-2xl font-bold text-[#2B81EB] hover:text-[#4D87C0] transition-colors flex items-center gap-2"
             >
-              Honza Gregor
+              <FontAwesomeIcon icon={faCode} className="text-xl" />
+              <span className="hidden sm:inline">Honza Gregor</span>
             </button>
             <div className="hidden md:flex space-x-8">
               <button
@@ -225,9 +229,10 @@ const App: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center mb-8">
             <button
               onClick={() => scrollToSection('hero')}
-              className="text-2xl font-bold mb-4 md:mb-0 hover:text-[#2B81EB] transition-colors"
+              className="text-2xl font-bold mb-4 md:mb-0 hover:text-[#2B81EB] transition-colors flex items-center gap-2"
             >
-              Honza Gregor
+              <FontAwesomeIcon icon={faCode} className="text-xl" />
+              <span className="hidden sm:inline">Honza Gregor</span>
             </button>
             <div className="flex gap-8 mb-4 md:mb-0">
               <button
