@@ -20,56 +20,70 @@ const Scene3D = () => {
         renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
         mountRef.current.appendChild(renderer.domElement);
 
-        // Create main geometric shape
-        const geometry = new THREE.IcosahedronGeometry(1, 1);
-        const material = new THREE.MeshPhysicalMaterial({
-            color: '#2B81EB',
-            metalness: 0.2,
-            roughness: 0.2,
-            clearcoat: 0.8,
-            clearcoatRoughness: 0.2,
-            transmission: 0.5,
-            thickness: 0.5,
-            envMapIntensity: 1
-        });
-        const mainSphere = new THREE.Mesh(geometry, material);
-        scene.add(mainSphere);
-
-        // Create particles
-        const particlesGeometry = new THREE.BufferGeometry();
+        // Create code particles
         const particlesCount = 2000;
-        const posArray = new Float32Array(particlesCount * 3);
+        const particlesGeometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
 
-        for (let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 5;
+        for (let i = 0; i < particlesCount * 3; i += 3) {
+            positions[i] = (Math.random() - 0.5) * 20;
+            positions[i + 1] = (Math.random() - 0.5) * 20;
+            positions[i + 2] = (Math.random() - 0.5) * 20;
+
+            // Use a more subtle color palette
+            colors[i] = Math.random() * 0.3 + 0.2;     // R
+            colors[i + 1] = Math.random() * 0.3 + 0.4; // G
+            colors[i + 2] = Math.random() * 0.3 + 0.6; // B
         }
 
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
         const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.005,
-            color: '#4D87C0',
+            size: 0.03,
+            vertexColors: true,
             transparent: true,
-            opacity: 0.8
+            opacity: 0.4
         });
 
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
 
+        // Create floating icons
+        const iconGeometry = new THREE.PlaneGeometry(1, 1);
+        const iconMaterial = new THREE.MeshBasicMaterial({
+            color: '#2B81EB',
+            transparent: true,
+            opacity: 0.2
+        });
+
+        const icons: THREE.Mesh[] = [];
+        for (let i = 0; i < 8; i++) {
+            const icon = new THREE.Mesh(iconGeometry, iconMaterial);
+            icon.position.set(
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 15
+            );
+            icons.push(icon);
+            scene.add(icon);
+        }
+
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
         scene.add(ambientLight);
 
-        const pointLight1 = new THREE.PointLight(0x2B81EB, 2);
+        const pointLight1 = new THREE.PointLight(0x2B81EB, 1);
         pointLight1.position.set(2, 3, 4);
         scene.add(pointLight1);
 
-        const pointLight2 = new THREE.PointLight(0x4D87C0, 2);
+        const pointLight2 = new THREE.PointLight(0x4D87C0, 1);
         pointLight2.position.set(-2, -3, -4);
         scene.add(pointLight2);
 
         // Position camera
-        camera.position.z = 2.5;
+        camera.position.z = 10;
 
         // Mouse movement effect
         let mouseX = 0;
@@ -90,17 +104,22 @@ const Scene3D = () => {
         const animate = () => {
             requestAnimationFrame(animate);
 
-            targetX = mouseX * 0.001;
-            targetY = mouseY * 0.001;
+            targetX = mouseX * 0.0005; // Reduced movement sensitivity
+            targetY = mouseY * 0.0005;
 
-            mainSphere.rotation.y += 0.01;
-            mainSphere.rotation.x += 0.005;
+            // Animate particles
+            particlesMesh.rotation.y += 0.001;
+            particlesMesh.rotation.x += 0.0005;
 
-            mainSphere.rotation.y += (targetX - mainSphere.rotation.y) * 0.05;
-            mainSphere.rotation.x += (targetY - mainSphere.rotation.x) * 0.05;
+            // Animate icons
+            icons.forEach((icon, index) => {
+                icon.position.y += Math.sin(Date.now() * 0.0005 + index) * 0.005;
+                icon.rotation.z += 0.005;
+            });
 
-            particlesMesh.rotation.y += 0.002;
-            particlesMesh.rotation.x += 0.001;
+            // Camera movement
+            camera.position.x += (targetX - camera.position.x) * 0.02;
+            camera.position.y += (targetY - camera.position.y) * 0.02;
 
             renderer.render(scene, camera);
         };
@@ -128,20 +147,20 @@ const Scene3D = () => {
             if (mountRef.current) {
                 mountRef.current.removeChild(renderer.domElement);
             }
-            geometry.dispose();
-            material.dispose();
             particlesGeometry.dispose();
             particlesMaterial.dispose();
+            iconGeometry.dispose();
+            iconMaterial.dispose();
         };
     }, []);
 
     return (
         <div
             ref={mountRef}
-            className="w-full h-full min-h-[400px]"
+            className="absolute inset-0 w-full h-full"
             style={{
                 background: 'transparent',
-                cursor: 'move'
+                pointerEvents: 'none'
             }}
         />
     );
