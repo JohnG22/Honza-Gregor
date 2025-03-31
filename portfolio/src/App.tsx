@@ -1,7 +1,8 @@
 import React from 'react'
 import Scene3D from './components/Scene3D'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCode } from '@fortawesome/free-solid-svg-icons'
+import { faCode, faShieldHalved } from '@fortawesome/free-solid-svg-icons'
+import { faFigma, faReact } from '@fortawesome/free-brands-svg-icons'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
@@ -125,19 +126,24 @@ const App: React.FC = () => {
             {[
               {
                 title: "Pro design dodržující praktiky UI/UX designu",
-                description: "Mé pracovní postupy kombinují inovativní technologie a osvědčené metody pro maximální efektivitu."
+                description: "Mé pracovní postupy kombinují inovativní technologie a osvědčené metody pro maximální efektivitu.",
+                icon: faFigma
               },
               {
                 title: "Pro nejvyšší rychlost a responzivitu vašeho webu",
-                description: "Používám nejmodernější technologie, které zajistí kvalitní a rychlé řešení."
+                description: "Používám nejmodernější technologie, které zajistí kvalitní a rychlé řešení.",
+                icon: faReact
               },
               {
                 title: "Pro bezpečnost vašich dat a soukromých údajů na webu",
-                description: "Dbám také na denní kontroly, abychom zjistili vaše data bezpečná."
+                description: "Dbám také na denní kontroly, abychom zjistili vaše data bezpečná.",
+                icon: faShieldHalved
               }
             ].map((tech, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                <div className="bg-[#728087] aspect-video rounded-md mb-6"></div>
+                <div className="flex justify-center mb-6">
+                  <FontAwesomeIcon icon={tech.icon} className="text-4xl md:text-5xl lg:text-6xl text-[#2B81EB]" />
+                </div>
                 <h3 className="text-xl font-semibold text-[#394042] mb-4">{tech.title}</h3>
                 <p className="text-[#728087] mb-4">{tech.description}</p>
                 <a href="#" className="text-[#2B81EB] hover:text-[#4D87C0] inline-flex items-center">
