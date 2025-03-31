@@ -23,13 +23,13 @@ const Hero: React.FC<HeroProps> = ({ scrollToSection }) => {
                                 onClick={() => scrollToSection('sluzby')}
                                 className="bg-[#2B81EB] text-white px-8 py-3 rounded-md hover:bg-[#4D87C0] transition-colors duration-300"
                             >
-                                Zjistit více
+                                Chci lepší web
+
                             </button>
                             <button
                                 onClick={() => scrollToSection('kontakt')}
                                 className="border border-[#728087] text-[#394042] px-8 py-3 rounded-md hover:bg-gray-50 transition-colors duration-300"
-                            >
-                                Kontaktujte nás
+                            >Zjistit více
                             </button>
                         </div>
                     </div>

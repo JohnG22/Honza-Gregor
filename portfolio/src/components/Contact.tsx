@@ -10,21 +10,21 @@ const Contact: React.FC = () => {
                     Kontakt
                 </h2>
                 <p className="text-[#728087] mb-12">
-                    Kontaktuj mě pro více informací nebo když najdeš jinou sociální médiu.
+                    Máte zájem o spolupráci nebo chcete vědět více? Neváhejte mě kontaktovat.
                 </p>
                 <div className="grid md:grid-cols-2 gap-12">
                     <div className="space-y-8">
                         <div>
-                            <h3 className="text-lg font-semibold text-[#394042] mb-2">Email</h3>
+                            <h3 className="text-lg font-semibold text-[#394042] mb-2">Napište mi</h3>
                             <div className="flex items-center gap-3">
                                 <FontAwesomeIcon icon={faEnvelope} className="text-[#2B81EB]" />
-                                <a href="mailto:sales@elitesoftware.cz" className="text-[#728087] hover:text-[#2B81EB] transition-colors">
-                                    sales@elitesoftware.cz
+                                <a href="mailto:honza.gregor@email.cz" className="text-[#728087] hover:text-[#2B81EB] transition-colors">
+                                    honza.gregor@email.cz
                                 </a>
                             </div>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold text-[#394042] mb-2">Telefon</h3>
+                            <h3 className="text-lg font-semibold text-[#394042] mb-2">Zavolejte mi</h3>
                             <div className="flex items-center gap-3">
                                 <FontAwesomeIcon icon={faPhone} className="text-[#2B81EB]" />
                                 <a href="tel:+420608682944" className="text-[#728087] hover:text-[#2B81EB] transition-colors">
@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
                             </div>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold text-[#394042] mb-2">Sídlo</h3>
+                            <h3 className="text-lg font-semibold text-[#394042] mb-2">Kde mě najdete</h3>
                             <div className="flex items-center gap-3">
                                 <FontAwesomeIcon icon={faLocationDot} className="text-[#2B81EB]" />
                                 <span className="text-[#728087]">Uherský Brod Nová 1 1263</span>

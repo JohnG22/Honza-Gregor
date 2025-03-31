@@ -1,39 +1,58 @@
 import React from 'react'
+import { FaRocket, FaPalette, FaCode, FaHandshake } from 'react-icons/fa'
 
 const AboutMe: React.FC = () => {
     const features = [
         {
-            title: "Rychlost a efektivita webových stránek",
-            description: "Rychlé weby přitahují více návštěv a konverzí."
+            title: "Blesková rychlost",
+            description: "Weby, které se načítají okamžitě a přitahují více návštěvníků.",
+            icon: FaRocket,
+            className: "md:col-span-2 bg-gradient-to-br from-blue-50 to-white"
         },
         {
-            title: "Moderní design a uživatelská přívětivost",
-            description: "Vytvářím moderní přívětivé a intuitivní rozhraní."
+            title: "Design, který zaujme",
+            description: "Moderní a intuitivní rozhraní, které vaše zákazníky nadchne.",
+            icon: FaPalette,
+            className: "md:col-span-1 bg-gradient-to-br from-blue-100 to-white"
         },
         {
-            title: "Pokročilé technologie a inovativní přístupy",
-            description: "Aktivně sleduji nejnovější trendy a technologie v oboru."
+            title: "Špičkové technologie",
+            description: "Využívám nejnovější technologie pro maximální výkon a bezpečnost.",
+            icon: FaCode,
+            className: "md:col-span-1 bg-gradient-to-br from-blue-50 to-white"
         },
         {
-            title: "Osobní přístup a spokojenost klientů",
-            description: "Každý projekt přizpůsobuji individuálním potřebám klientů."
+            title: "Váš úspěch je můj úspěch",
+            description: "Individuální přístup a společné dosažení vašich cílů.",
+            icon: FaHandshake,
+            className: "md:col-span-2 bg-gradient-to-br from-blue-100 to-white"
         }
     ]
 
     return (
-        <section className="py-20 bg-gray-50" id="omne">
+        <section className="py-20 bg-gradient-to-b from-gray-50 to-white" id="omne">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#394042] mb-6">
-                    Proč zrovna já?
-                </h2>
-                <p className="text-[#728087] max-w-2xl mb-12">
-                    Jsem zkušený webový vývojář specializující se na moderní a efektivní řešení. Moje dlouholeté zkušenosti mi umožňují implementaci s využitím nejnovějších technologií.
-                </p>
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-[#394042] mb-6 text-center">
+                        Proč zvolit mě?
+                    </h2>
+                    <p className="text-[#728087] max-w-2xl mx-auto text-center text-lg">
+                        Jsem webový vývojář, který spojuje kreativitu s technickou precizností.
+                        Vytvářím weby, které nejen vypadají skvěle, ale především fungují efektivně.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {features.map((feature, index) => (
-                        <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-                            <h3 className="text-xl font-semibold text-[#394042] mb-4">{feature.title}</h3>
-                            <p className="text-[#728087]">{feature.description}</p>
+                        <div
+                            key={index}
+                            className={`${feature.className} p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:scale-[1.02]`}
+                        >
+                            <div className="flex items-center mb-4">
+                                <feature.icon className="w-8 h-8 text-blue-500 mr-3" />
+                                <h3 className="text-xl font-semibold text-[#394042]">{feature.title}</h3>
+                            </div>
+                            <p className="text-[#728087] leading-relaxed">{feature.description}</p>
                         </div>
                     ))}
                 </div>

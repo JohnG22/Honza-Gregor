@@ -65,7 +65,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, scrollToSection 
                             onClick={() => handleNavClick('kontakt')}
                             className="bg-[#2B81EB] text-white px-6 py-2 rounded-md hover:bg-[#4D87C0]"
                         >
-                            Kontaktujte nás
+                            Kontaktujte mě
                         </button>
                     </div>
 
@@ -111,7 +111,7 @@ const Navigation: React.FC<NavigationProps> = ({ activeSection, scrollToSection 
                             onClick={() => handleNavClick('kontakt')}
                             className="bg-[#2B81EB] text-white px-6 py-3 rounded-md hover:bg-[#4D87C0] mt-4"
                         >
-                            Kontaktujte nás
+                            Kontaktujte mě
                         </button>
                     </div>
                 </div>

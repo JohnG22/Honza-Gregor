@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import ecommerce from '../assets/e-commerce.png'
+import ggt from '../assets/GGT.png'
+import landingPage from '../assets/Landing-page-design.png'
+import emdm from '../assets/eMDM.png'
+import Modal from './Modal'
 
 const Portfolio: React.FC = () => {
+    const [selectedImage, setSelectedImage] = useState<{ image: string; title: string } | null>(null);
+
+    const handleImageClick = (image: string, title: string) => {
+        setSelectedImage({ image, title });
+    };
+
     return (
         <section className="py-20" id="portfolio">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -39,27 +50,30 @@ const Portfolio: React.FC = () => {
                         {
                             title: "E-commerce Platform",
                             description: "Moderní e-shop s pokročilými funkcemi a optimalizovaným výkonem",
-                            image: "https://via.placeholder.com/600x400"
+                            image: ecommerce
                         },
                         {
-                            title: "Corporate Website",
-                            description: "Profesionální webová prezentace pro velkou společnost",
-                            image: "https://via.placeholder.com/600x400"
+                            title: "GGT Project",
+                            description: "Profesionální webová prezentace pro GGT",
+                            image: ggt
                         },
                         {
-                            title: "Portfolio Website",
-                            description: "Kreativní portfolio pro umělce s galerií a animacemi",
-                            image: "https://via.placeholder.com/600x400"
+                            title: "Landing Page Design",
+                            description: "Kreativní landing page s moderním designem",
+                            image: landingPage
                         },
                         {
-                            title: "Landing Page",
-                            description: "Konverzní landing page pro marketingovou kampaň",
-                            image: "https://via.placeholder.com/600x400"
+                            title: "eMDM Solution",
+                            description: "Enterprise MDM řešení pro správu dat",
+                            image: emdm
                         }
                     ].map((project, index) => (
                         <SwiperSlide key={index}>
                             <div className="bg-white p-6 rounded-lg shadow-sm">
-                                <div className="aspect-video rounded-md mb-6 overflow-hidden">
+                                <div
+                                    className="aspect-video rounded-md mb-6 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                                    onClick={() => handleImageClick(project.image, project.title)}
+                                >
                                     <img
                                         src={project.image}
                                         alt={project.title}
@@ -73,6 +87,12 @@ const Portfolio: React.FC = () => {
                     ))}
                 </Swiper>
             </div>
+            <Modal
+                isOpen={!!selectedImage}
+                onClose={() => setSelectedImage(null)}
+                image={selectedImage?.image || ''}
+                title={selectedImage?.title || ''}
+            />
         </section>
     )
 }

@@ -45,12 +45,12 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
 
                     {/* Contact Information */}
                     <div className="space-y-6">
-                        <h3 className="text-lg font-semibold">Kontaktní informace</h3>
+                        <h3 className="text-lg font-semibold">Kontaktní údaje</h3>
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 text-gray-300">
                                 <FontAwesomeIcon icon={faEnvelope} className="text-[#2B81EB]" />
-                                <a href="mailto:sales@elitesoftware.cz" className="hover:text-[#2B81EB] transition-colors">
-                                    sales@elitesoftware.cz
+                                <a href="mailto:honza.gregor@email.cz" className="hover:text-[#2B81EB] transition-colors">
+                                    honza.gregor@email.cz
                                 </a>
                             </div>
                             <div className="flex items-center gap-3 text-gray-300">
@@ -68,10 +68,10 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
 
                     {/* Social Media Links */}
                     <div className="space-y-6">
-                        <h3 className="text-lg font-semibold">Sledujte mě</h3>
+                        <h3 className="text-lg font-semibold">Sociální sítě</h3>
                         <div className="flex gap-6">
                             <a
-                                href="https://github.com"
+                                href="https://github.com/honzagregor"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-300 hover:text-[#2B81EB] transition-colors"
@@ -79,7 +79,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
                                 <FontAwesomeIcon icon={faGithub} size="lg" />
                             </a>
                             <a
-                                href="https://facebook.com"
+                                href="https://facebook.com/honza.gregor"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-300 hover:text-[#2B81EB] transition-colors"
@@ -87,7 +87,7 @@ const Footer: React.FC<FooterProps> = ({ scrollToSection }) => {
                                 <FontAwesomeIcon icon={faFacebook} size="lg" />
                             </a>
                             <a
-                                href="https://instagram.com"
+                                href="https://instagram.com/honza.gregor"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-gray-300 hover:text-[#2B81EB] transition-colors"
