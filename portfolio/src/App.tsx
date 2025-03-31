@@ -1,20 +1,56 @@
 import React from 'react'
+import Scene3D from './components/Scene3D'
 
 const App: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white z-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="text-2xl font-bold text-[#2B81EB]">Logo</div>
+            <button
+              onClick={() => scrollToSection('hero')}
+              className="text-2xl font-bold text-[#2B81EB] hover:text-[#4D87C0] transition-colors"
+            >
+              Honza Gregor
+            </button>
             <div className="hidden md:flex space-x-8">
-              <a href="#sluzby" className="text-[#394042] hover:text-[#2B81EB]">Služby</a>
-              <a href="#oceneni" className="text-[#394042] hover:text-[#2B81EB]">Ocenění</a>
-              <a href="#portfolio" className="text-[#394042] hover:text-[#2B81EB]">Portfolio</a>
-              <a href="#kontakt" className="text-[#394042] hover:text-[#2B81EB]">Kontakt</a>
+              <button
+                onClick={() => scrollToSection('sluzby')}
+                className="text-[#394042] hover:text-[#2B81EB]"
+              >
+                Služby
+              </button>
+              <button
+                onClick={() => scrollToSection('omne')}
+                className="text-[#394042] hover:text-[#2B81EB]"
+              >
+                O mně
+              </button>
+              <button
+                onClick={() => scrollToSection('portfolio')}
+                className="text-[#394042] hover:text-[#2B81EB]"
+              >
+                Portfolio
+              </button>
+              <button
+                onClick={() => scrollToSection('kontakt')}
+                className="text-[#394042] hover:text-[#2B81EB]"
+              >
+                Kontakt
+              </button>
             </div>
-            <button className="bg-[#2B81EB] text-white px-6 py-2 rounded-md hover:bg-[#4D87C0]">
+            <button
+              onClick={() => scrollToSection('kontakt')}
+              className="bg-[#2B81EB] text-white px-6 py-2 rounded-md hover:bg-[#4D87C0]"
+            >
               Kontaktujte nás
             </button>
           </div>
@@ -22,7 +58,7 @@ const App: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8" id="hero">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -41,7 +77,9 @@ const App: React.FC = () => {
                 </button>
               </div>
             </div>
-            <div className="bg-[#728087] rounded-lg aspect-video"></div>
+            <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
+              <Scene3D />
+            </div>
           </div>
         </div>
       </section>
@@ -102,8 +140,8 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Why Me Section */}
-      <section className="py-20 bg-gray-50" id="oceneni">
+      {/* Why Me Section - Updated ID */}
+      <section className="py-20 bg-gray-50" id="omne">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-[#394042] mb-6">
             Proč zrovna já?
@@ -185,11 +223,31 @@ const App: React.FC = () => {
       <footer className="bg-[#394042] text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-            <div className="text-2xl font-bold mb-4 md:mb-0">Logo</div>
+            <button
+              onClick={() => scrollToSection('hero')}
+              className="text-2xl font-bold mb-4 md:mb-0 hover:text-[#2B81EB] transition-colors"
+            >
+              Honza Gregor
+            </button>
             <div className="flex gap-8 mb-4 md:mb-0">
-              <a href="#sluzby" className="hover:text-[#2B81EB]">Služby</a>
-              <a href="#portfolio" className="hover:text-[#2B81EB]">Portfolio</a>
-              <a href="#kontakt" className="hover:text-[#2B81EB]">Kontakt</a>
+              <button
+                onClick={() => scrollToSection('sluzby')}
+                className="text-white hover:text-[#2B81EB]"
+              >
+                Služby
+              </button>
+              <button
+                onClick={() => scrollToSection('portfolio')}
+                className="text-white hover:text-[#2B81EB]"
+              >
+                Portfolio
+              </button>
+              <button
+                onClick={() => scrollToSection('kontakt')}
+                className="text-white hover:text-[#2B81EB]"
+              >
+                Kontakt
+              </button>
             </div>
             <div className="flex gap-4">
               {/* Social media icons will be added here */}
