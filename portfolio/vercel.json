@@ -5,28 +5,7 @@
             "destination": "/index.html"
         }
     ],
-    "buildCommand": "npm install && npm run build",
+    "buildCommand": "npm run build",
     "outputDirectory": "dist",
-    "framework": "vite",
-    "installCommand": "npm install",
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
-        }
-    ],
-    "headers": [
-        {
-            "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "public, max-age=0, must-revalidate"
-                }
-            ]
-        }
-    ]
+    "framework": "vite"
 }
